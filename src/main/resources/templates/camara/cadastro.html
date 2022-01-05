@@ -8,66 +8,65 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="/css/style.css">
     <title>Legis</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="/images/tribunais.png" alt="" width="30" height="24">
 
-                <h3>Legis</h3>
+        <div th:replace="/baseTemplate/base :: cabecalho"></div>
 
-        </a>
-    </div>
-</nav>
+        <div class="container mt-3">
 
-<div class="container mt-3">
+        <div th:replace="/baseTemplate/base :: jumbo('Vamos começar...')">
 
-    <div class="jumbotron">
-            <h1 class="display-4 d-flex justify-content-center">Vamos começar</h1>
-            <hr class="my-4">
-    </div>
+        </div>
 
-    <form th:action="@{/camara/cadastrar}" th:object="${camaraDto}" method="POST">
+        <form th:action="@{/camara/cadastrar}" th:object="${camara}" method="POST">
 
-        <div class="form-group">
-            <label for="cnpj" class="form-label">CNPJ</label>
-            <input th:field="*{cnpj}" type="text" th:errorclass="is-invalid" class="form-control" id="cnpj">
-            <small>Informe o cnpj</small>
-            <div class="invalid-feedback" th:errors="*{cnpj}">
+            <div class="form-group">
+                <label for="cnpj" class="form-label tituloLabel">CNPJ</label>
+                <input th:field="*{cnpj}" type="text" th:errorclass="is-invalid" class="form-control is-valid" id="cnpj">
+                <small>Informe o cnpj</small>
+                <div class="invalid-feedback" th:errors="*{cnpj}">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="municipio" class="form-label">MUNICÍPIO</label>
-            <input th:field="*{municipio}" th:errorclass="is-invalid" type="text" class="form-control" id="municipio">
-            <small>Informe o município</small>
-            <div class="invalid-feedback" th:errors="*{municipio}">
+            <div class="form-group">
+                <label for="municipio" class="form-label tituloLabel">NOME DO MUNICÍPIO</label>
+                <input th:field="*{municipio}" th:errorclass="is-invalid" type="text" class="form-control is-valid" id="municipio">
+                <small>Informe o nome do município</small>
+                <div class="invalid-feedback" th:errors="*{municipio}">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="email" class="form-label">E-MAIL</label>
-            <input th:field="*{email}" th:errorclass="is-invalid" type="email" class="form-control" id="email">
-            <small>Informe um e-mail</small>
-            <div class="invalid-feedback" th:errors="*{email}"></div>
-        </div>
+            <div class="form-group">
+                <label for="email" class="form-label tituloLabel">E-MAIL</label>
+                <input th:field="*{email}" th:errorclass="is-invalid" type="email" class="form-control is-valid" id="email">
+                <small>Informe um e-mail</small>
+                <div class="invalid-feedback" th:errors="*{email}"></div>
+            </div>
 
-        <div class="form-group">
-            <label for="senha" class="form-label">SENHA</label>
-            <input th:field="*{senha}" th:errorclass="is-invalid" type="password" class="form-control" id="senha" >
-            <small>Informe uma senha entre 5 a 20 caracteres</small>
-            <div class="invalid-feedback" th:errors="*{senha}"></div>
-        </div>
+            <div class="form-group">
+                <label for="senha" class="form-label tituloLabel">SENHA</label>
+                <input th:field="*{senha}" th:errorclass="is-invalid" type="password" class="form-control is-valid" id="senha" >
+                <small>Informe uma senha entre 5 a 20 caracteres</small>
+                <div class="invalid-feedback" th:errors="*{senha}"></div>
+            </div>
 
-        <div class="d-flex justify-content-center mb-5">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </div>
+            <div class="form-group">
+                <label for="quantidadeLimiteDeCotaMensal" class="form-label tituloLabel">QUANTIDADE COTA MENSAL</label>
+                <input th:field="*{quantidadeLimiteDeCotaMensal}" type="text" th:errorclass="is-invalid" class="form-control is-valid" id="quantidadeLimiteDeCotaMensal">
+                <small>Informe o limite de cota mensal</small>
+                <div class="invalid-feedback" th:errors="*{quantidadeLimiteDeCotaMensal}">
+                </div>
+            </div>
 
-    </form>
-</div>
+            <div class="d-flex justify-content-center mb-5">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+
+        </form>
+    </div>
 
 <!-- JavaScript (Opcional) -->
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

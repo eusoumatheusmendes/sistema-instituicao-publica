@@ -1,10 +1,11 @@
 package br.com.camara.legisprint.controller;
 
-import br.com.camara.legisprint.dto.CamaraDto;
 import br.com.camara.legisprint.model.Camara;
 import br.com.camara.legisprint.repository.CamaraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,18 +22,20 @@ public class CamaraController {
     private CamaraRepository repository;
 
     @GetMapping("/cadastro")
-    public String abrirPaginaDecadastro(CamaraDto camaraDto){
+    public String abrirPaginaDecadastro(Camara camara){
         return "/camara/cadastro";
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrar(@Valid CamaraDto camaraDto, BindingResult result, RedirectAttributes ra){
+    public String cadastrar(@Valid Camara camara, BindingResult result, RedirectAttributes ra, Model model){
         if(result.hasErrors()){
             return "/camara/cadastro";
         }
-        Camara camara = camaraDto.convertToCamara();
+        BCryptPasswordEncoder senhaCriptografada = new BCryptPasswordEncoder();
+        camara.setSenha(senhaCriptografada.encode(camara.getSenha()));
         repository.save(camara);
-        ra.addFlashAttribute("sucesso", "Cadastro realizado com sucesso!");
-        return "redirect:/acesso/login";
+        model.addAttribute("sucesso", "Cadastro realizado com sucesso!");
+        //ra.addFlashAttribute("sucesso", "Cadastro realizado com sucesso!");
+        return "/acesso/login";
     }
 }
