@@ -43,6 +43,7 @@
 
         <div>
             <h6 class="d-flex justify-content-center mt-4" style="color: #4895ff" th:text=" 'Celular: ' +${vereador.getNumeroDeCelular()}"></h6>
+            <h6 class="d-flex justify-content-center mt-4" style="color: #4895ff" th:text=" 'id: ' +${vereador.getId()}"></h6>
             <h6 class="d-flex justify-content-center mt-4"  style="color: #4895ff"  th:text=" 'Partido: ' +${vereador.getPartido().getSigla()}"></h6>
             <h6 class="d-flex justify-content-center mt-4"  style="color: #4895ff"  th:text=" 'Aniversário: ' +${#temporals.format(vereador.getDataDeAniversario(), 'dd/MM')}"></h6>
         </div>

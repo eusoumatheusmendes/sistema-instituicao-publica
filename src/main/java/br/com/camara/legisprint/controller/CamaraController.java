@@ -2,7 +2,10 @@ package br.com.camara.legisprint.controller;
 
 import br.com.camara.legisprint.model.Camara;
 import br.com.camara.legisprint.repository.CamaraRepository;
+import br.com.camara.legisprint.services.AutenticacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,9 @@ public class CamaraController {
     @Autowired
     private CamaraRepository repository;
 
+    @Autowired
+    private AutenticacaoService autenticacaoService;
+
     @GetMapping("/cadastro")
     public String abrirPaginaDecadastro(Camara camara){
         return "/camara/cadastro";
@@ -38,4 +44,6 @@ public class CamaraController {
         //ra.addFlashAttribute("sucesso", "Cadastro realizado com sucesso!");
         return "/acesso/login";
     }
+
+
 }

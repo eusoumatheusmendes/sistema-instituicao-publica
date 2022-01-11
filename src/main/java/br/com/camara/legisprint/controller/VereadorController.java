@@ -6,8 +6,10 @@ import br.com.camara.legisprint.model.Vereador;
 import br.com.camara.legisprint.repository.CamaraRepository;
 import br.com.camara.legisprint.repository.PartidoRepository;
 import br.com.camara.legisprint.repository.VereadorRepository;
+import br.com.camara.legisprint.services.AutenticacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +34,9 @@ public class VereadorController {
     @Autowired
     private CamaraRepository camaraRepository;
 
+    @Autowired
+    private AutenticacaoService autenticacaoService;
+
     @GetMapping("/cadastro")
     public String abrirPaginaDeCadastro(Vereador vereador){
         return "/vereador/cadastro";
@@ -42,6 +47,8 @@ public class VereadorController {
         if(result.hasErrors()){
             return "/vereador/cadastro";
         }
+        vincularParlamentarACamaraLogada(vereador);
+        autenticacaoService.vincularCotaDaInstituicaoLogadaAoParlamentar(vereador);
         repository.save(vereador);
         ra.addFlashAttribute("sucesso", "Parlamentar cadastrado com sucesso!");
         return "redirect:/painel";
@@ -50,6 +57,19 @@ public class VereadorController {
     @ModelAttribute("partidos")
     public Collection<Partido> populaCombobox(){
         return partidoRepository.findAll();
+    }
+
+    @GetMapping("/lista")
+    public String listar(Model model){
+        Camara camara = autenticacaoService.trazerInstituicaoLogada();
+        model.addAttribute("vereadores", repository.buscarTodosOsVereadoresDaInstituicaoLogada(camara.getId()));
+        return "/vereador/lista";
+
+    }
+
+    public void vincularParlamentarACamaraLogada(Vereador vereador){
+        Camara camaraLogada = camaraRepository.buscarPorId(autenticacaoService.retornarIdDaInstituicaoLogada());
+        vereador.setCamara(camaraLogada);
     }
 
 
