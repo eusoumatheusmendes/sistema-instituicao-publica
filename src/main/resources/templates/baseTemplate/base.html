@@ -1,21 +1,18 @@
-<link href="https://fonts.googleapis.com/css2?family=Shizuru&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap" rel="stylesheet">
 
 <nav class="navbar navbar-light bg corCabecalho" th:fragment="cabecalho">
   <a class="navbar-brand " href="/">
-    <img class="mb-2" src="/images/tribunais.png" alt="" width="30" height="24">
+    <ion-icon name="shield-checkmark-outline"></ion-icon>
   </a>
 
+  <div class="navbar-text">
   <ul class="nav justify-content-end">
     <li class="nav-item">
-      <h3 style="color: #f5f5f5; font-family: 'Poiret One', cursive;">Legis</h3>
+      <h3 style="color: #f5f5f5; font-family: 'EB Garamond', serif;">Legis</h3>
     </li>
   </ul>
-
-  <div>
-    <form th:action="@{/logout}" method="POST">
-      <button type="submit" class="btn btn-light">Sair</button>
-    </form>
   </div>
 </nav>
 
@@ -24,3 +21,8 @@
   <h1 class="display-4 d-flex justify-content-center" th:text="${valor}"></h1>
   <hr class="my-4">
 </div>
+
+<body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>

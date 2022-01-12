@@ -25,6 +25,7 @@
 
         <div th:replace="/baseTemplate/base :: jumbo('Parlamentares')"> </div>
 
+        <a class="d-flex justify-content-center mb-3" href="/vereador/cadastro"><ion-icon name="add-circle"></ion-icon></a>
             <table class="table" >
                 <thead>
                     <tr>
@@ -40,7 +41,7 @@
                         <td th:text="${vereador.getNumeroDeCelular()}">Otto</td>
                         <td th:text="${vereador.getPartido().getSigla()}">@mdo</td>
                         <td>
-                            <a href="#"><ion-icon name="create-outline"></ion-icon></a>
+                            <a id="iconeEdicao" th:href="@{/vereador/editar/{id} (id = ${vereador.getId()})}"><ion-icon name="create-outline"></ion-icon></a>
                             <a href="#"><ion-icon name="close-outline"></ion-icon></a>
                         </td>
                     </tr>

@@ -47,4 +47,8 @@ public class AutenticacaoService implements UserDetailsService{
     public Camara trazerInstituicaoLogada(){
         return repository.buscarPorId(retornarIdDaInstituicaoLogada());
     }
+
+    public boolean estahLogada(){
+        return retornarIdDaInstituicaoLogada() != null;
+    }
 }

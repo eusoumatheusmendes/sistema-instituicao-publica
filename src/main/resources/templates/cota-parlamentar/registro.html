@@ -56,13 +56,13 @@
 
         <hr>
 
-        <form th:action="@{/cota/registrar/{id}(id = ${vereador.getId()})}" th:object="${cotaDeImpressao}"   method="POST" >
+        <form th:action="@{/cota/registrar/{id}(id = ${vereador.getId()})}" th:object="${cotaDeImpressao}"  method="POST">
 
             <div class="mb-3">
                 <label for="quantidade" class="form-label tituloLabel">Quantidade utilizada</label>
                 <input th:field="*{quantidadeUtilizada}" th:errorclass="is-invalid" type="text" class="form-control is-valid" id="quantidade" placeholder="Entre com a quantidade usada de impressão/cópia">
                 <small>Quantidade usada</small>
-                <div class="invalid-feedback valid-feedback" th:errors="*{quantidadeUtilizada}">
+                <div class="invalid-feedback valid-feedback" th:errors="*{quantidadeUtilizada}"></div>
             </div>
 
             <div>
@@ -70,7 +70,7 @@
                 <div class="form-floating">
                     <textarea th:field="*{descricao}" th:errorclass="is-invalid" class="form-control is-valid" placeholder="Descreva sobre a finalidade da impressão/cópia ou nome do solicitante" id="descricao" style="height: 100px"></textarea>
                     <small>Informe o nome do solicitante ou outra descrição</small>
-                    <div class="invalid-feedback" th:errors="*{descricao}">
+                    <div class="invalid-feedback" th:errors="*{descricao}"></div>
                 </div>
             </div>
 
@@ -82,6 +82,10 @@
         </form>
 
     </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <!-- JavaScript (Opcional) -->
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
