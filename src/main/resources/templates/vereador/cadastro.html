@@ -19,6 +19,10 @@
 
     <div class="d-flex justify-content-center mt-2" th:insert="/alertas/mensagens"></div>
 
+    <div class="d-flex justify-content-center mt-2">
+        <a class="iconeVoltar" href="javascript:history.back()"><ion-icon name="arrow-back-outline"></ion-icon></a>
+        <a href="/painel/dashboard"><ion-icon name="menu-sharp"></ion-icon></a>
+    </div>
     <div class="container mt-3">
 
         <div th:replace="/baseTemplate/base :: jumbo('Parlamentares')">
@@ -28,7 +32,7 @@
         <form th:action="@{/vereador/cadastrar}" th:object="${vereador}" method="POST">
 
             <input type="hidden" th:field="*{id}">
-            
+
             <div class="form-group">
                 <label for="nomeCompleto" class="form-label tituloLabel">NOME COMPLETO</label>
                 <input th:field="*{nomeCompleto}" type="text" th:errorclass="is-invalid" class="form-control is-valid" id="nomeCompleto">

@@ -64,3 +64,10 @@ a{
 #iconeEdicao{
     margin-right: 15px;
 }
+.iconeVoltar{
+    margin-right: 40px;
+}
+.botaoLogout{
+    margin-left: 50px;
+    margin-bottom: 5px;
+}

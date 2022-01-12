@@ -23,7 +23,7 @@ public class PainelController {
     @Autowired
     private CotaController cotaController;
 
-    @GetMapping
+    @GetMapping("/dashboard")
     public String abrirPainelPrincipal(Model model, Vereador vereador){
         model.addAttribute("somaDoUsoDeCotaMensal", cotaController.quantidadeUsadaDoMes());
         model.addAttribute("somaDoUsoDeCotaAnual", cotaController.quantidadeDeCotaUsadaNoAno());
@@ -32,5 +32,11 @@ public class PainelController {
         return "/painel/principal";
     }
 
+    @GetMapping("/area")
+    public String areaDoLogado(Model model){
+        model.addAttribute("somaDoUsoDeCotaMensal", cotaController.quantidadeUsadaDoMes());
+        model.addAttribute("somaDoUsoDeCotaAnual", cotaController.quantidadeDeCotaUsadaNoAno());
+        return "/camara/area";
+    }
 
 }

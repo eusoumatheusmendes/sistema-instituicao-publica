@@ -54,7 +54,7 @@ public class VereadorController {
         autenticacaoService.vincularCotaDaInstituicaoLogadaAoParlamentar(vereador);
         repository.save(vereador);
         ra.addFlashAttribute("sucesso", "Parlamentar cadastrado com sucesso!");
-        return "redirect:/painel";
+        return "redirect:/painel/dashboard";
     }
 
     @ModelAttribute("partidos")

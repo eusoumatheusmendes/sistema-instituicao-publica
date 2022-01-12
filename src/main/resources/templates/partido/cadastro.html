@@ -17,9 +17,14 @@
         <div th:replace="~{/baseTemplate/base :: cabecalho}"> </div>
     </header>
 
+    <div class="d-flex justify-content-center mt-3">
+        <a class="iconeVoltar" href="javascript:history.back()"><ion-icon name="arrow-back-outline"></ion-icon></a>
+        <a href="/painel/dashboard"><ion-icon name="menu-sharp"></ion-icon></a>
+    </div>
     <div class="container mt-3">
 
-       <div th:replace="/baseTemplate/base :: jumbo('Partidos Políticos')"></div>
+       <div th:replace="/baseTemplate/base :: jumbo('Partidos Políticos')">
+       </div>
 
         <form th:action="@{/partido/cadastrar}" th:object="${partido}" method="POST">
 

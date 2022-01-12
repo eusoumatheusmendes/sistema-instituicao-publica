@@ -20,10 +20,15 @@
     </header>
 
     <div class="d-flex justify-content-center mt-2" th:insert="/alertas/mensagens"></div>
-
+        <div class="d-flex justify-content-center mt-2">
+            <a class="iconeVoltar" href="javascript:history.back()"><ion-icon name="arrow-back-outline"></ion-icon></a>
+            <a href="/painel/dashboard"><ion-icon name="menu-sharp"></ion-icon></a>
+        </div>
     <div class="container mt-3">
 
-        <div th:replace="/baseTemplate/base :: jumbo('Parlamentares')"> </div>
+        <div th:replace="/baseTemplate/base :: jumbo('Parlamentares')">
+
+        </div>
 
         <a class="d-flex justify-content-center mb-3" href="/vereador/cadastro"><ion-icon name="add-circle"></ion-icon></a>
             <table class="table" >
