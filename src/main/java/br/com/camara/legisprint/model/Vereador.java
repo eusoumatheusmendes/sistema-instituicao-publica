@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -18,11 +19,13 @@ public class Vereador extends AbstractEntity<Long>{
     }
 
     @Column @Getter @Setter
-    @NotBlank(message = "Por favor, informe no nome completo do vereador.")
+    @NotBlank(message = "Por favor, informe o nome completo do vereador.")
+    @Size(max = 50, message = "Nome completo não pode conter mais que 50 caracteres.")
     private String nomeCompleto;
 
     @Column @Getter @Setter
-    @NotBlank(message = "Por favor, informe no nome parlamentar usado na campanha.")
+    @NotBlank(message = "Por favor, informe o nome parlamentar usado na campanha.")
+    @Size(max = 50, message = "Nome parlamentar não pode conter mais que 100 caracteres.")
     private String nomeParlamentar;
 
     @Column @Getter @Setter
@@ -37,6 +40,7 @@ public class Vereador extends AbstractEntity<Long>{
 
     @Column @Getter @Setter
     @NotBlank(message = "Por favor, informe um número de contato do vereador.")
+    @Size(max = 11, message = "Número de celular não pode conter mais que 11 caracteres.")
     private String numeroDeCelular;
 
     @Column @Getter @Setter
@@ -97,6 +101,8 @@ public class Vereador extends AbstractEntity<Long>{
                 this.getDataDeAniversario().getDayOfMonth() == dia;
     }
 
-
+    public boolean ehCadastroNovo(){
+        return this.getId() == null;
+    }
 
 }

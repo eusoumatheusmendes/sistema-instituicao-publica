@@ -51,9 +51,11 @@ public class VereadorController {
             return "/vereador/cadastro";
         }
         vincularParlamentarACamaraLogada(vereador);
-        autenticacaoService.vincularCotaDaInstituicaoLogadaAoParlamentar(vereador);
+        if(vereador.ehCadastroNovo()){
+            autenticacaoService.vincularCotaDaInstituicaoLogadaAoParlamentar(vereador);
+        }
         repository.save(vereador);
-        ra.addFlashAttribute("sucesso", "Parlamentar cadastrado com sucesso!");
+        ra.addFlashAttribute("sucesso", "Ação executada com sucesso!!");
         return "redirect:/painel/dashboard";
     }
 
@@ -75,5 +77,22 @@ public class VereadorController {
         vereador.setCamara(camaraLogada);
     }
 
+    @GetMapping("/pesquisa-data")
+    public String buscarUsoDeCotasPorData(){
+        return "/vereador/tela-pesquisa";
+    }
+
+    @GetMapping("/confirma-exclusao/{id}")
+    public String abrirTelaDeConfirmacaoDeExclusao(@PathVariable("id") Vereador vereador, Model model){
+        model.addAttribute(vereador);
+        return "/vereador/confirma-exclusao";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String exluir(@PathVariable("id") Vereador vereador, RedirectAttributes ra){
+        repository.delete(vereador);
+        ra.addFlashAttribute("sucesso", "Parlamentar excluído(a) com sucesso!");
+        return "redirect:/vereador/lista";
+    }
 
 }

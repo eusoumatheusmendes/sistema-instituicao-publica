@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,6 +33,12 @@ public class CamaraController {
         return "/camara/cadastro";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable("id")Camara camara, Model model){
+        model.addAttribute(camara);
+        return "/camara/cadastro";
+    }
+
     @PostMapping("/cadastrar")
     public String cadastrar(@Valid Camara camara, BindingResult result, RedirectAttributes ra, Model model){
         if(result.hasErrors()){
@@ -40,7 +47,7 @@ public class CamaraController {
         BCryptPasswordEncoder senhaCriptografada = new BCryptPasswordEncoder();
         camara.setSenha(senhaCriptografada.encode(camara.getSenha()));
         repository.save(camara);
-        model.addAttribute("sucesso", "Cadastro realizado com sucesso!");
+        model.addAttribute("sucesso", "Ação executada com sucesso!");
         //ra.addFlashAttribute("sucesso", "Cadastro realizado com sucesso!");
         return "/acesso/login";
     }

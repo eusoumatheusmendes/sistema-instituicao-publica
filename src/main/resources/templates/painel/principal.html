@@ -20,31 +20,47 @@
 
   <div class="d-flex justify-content-center mt-2" th:insert="/alertas/mensagens"></div>
 
+  <div class="d-flex justify-content-center mt-2">
+    <span class="badge bg-dark text-white" th:text="${nomeDoMunicipioDaInstituicaoLogada}">Warning</span>
+  </div>
 
     <div class="row mt-4">
 
       <a class="navbar-brand" href="/cota/lista">
         <span class="linksPaginaInicial">
-          <ion-icon name="book-outline"></ion-icon>
+          <ion-icon name="book"></ion-icon>
         </span>
       </a>
 
-      <a class="navbar-brand" href="/vereador/lista">
+      <a href="/vereador/pesquisa-data" class="navbar-brand">
         <span class="linksPaginaInicial">
-          <ion-icon name="build"></ion-icon>
+        <ion-icon name="document-text"></ion-icon>
         </span>
       </a>
 
-      <a href="/painel/area" class="navbar-brand">
+      <a href="/vereador/lista" class="navbar-brand">
         <span class="linksPaginaInicial">
-          <ion-icon name="person"></ion-icon>
+         <ion-icon name="people"></ion-icon>
         </span>
       </a>
+
+      <a class="navbar-brand" href="/painel/area">
+        <span class="linksPaginaInicial">
+            <ion-icon name="stats-chart"></ion-icon>
+        </span>
+      </a>
+
+      <a class="navbar-brand" th:href="@{/camara/editar/{id} (id = ${idDaInstituicaoLogada})}">
+        <span class="linksPaginaInicial">
+             <ion-icon name="create-outline"></ion-icon>
+        </span>
+      </a>
+
 
       <div class="botaoLogout">
         <form method="post" th:action="@{/logout}">
           <button class="btn btn-danger btn-sm btn-lg" role="button" aria-disabled="true">
-            <ion-icon name="log-out-outline"></ion-icon>
+            <ion-icon name="power-outline"></ion-icon>
           </button>
         </form>
       </div>

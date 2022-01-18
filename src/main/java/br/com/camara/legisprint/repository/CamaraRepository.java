@@ -1,11 +1,8 @@
 package br.com.camara.legisprint.repository;
 
 import br.com.camara.legisprint.model.Camara;
-import br.com.camara.legisprint.model.Vereador;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
 
 public interface CamaraRepository extends JpaRepository<Camara, Long> {
 
@@ -17,5 +14,7 @@ public interface CamaraRepository extends JpaRepository<Camara, Long> {
 
     Camara findByEmail(String email);
 
+    @Query("SELECT c.municipio FROM Camara c WHERE c.email = ?1")
+    String buscarNomeDoMunicipioDaInstituicaoLogada(String email);
 
 }

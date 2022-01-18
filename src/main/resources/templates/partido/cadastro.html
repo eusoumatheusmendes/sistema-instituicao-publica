@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label for="nome" class="form-label tituloLabel">NOME</label>
-                <input th:field="*{nome}" type="text" th:errorclass="is-invalid" class="form-control is-valid" id="nome">
+                <input th:maxlength="50" th:field="*{nome}" type="text" th:errorclass="is-invalid" class="form-control" id="nome">
                 <small>Nome do partido</small>
                 <div class="invalid-feedback" th:errors="*{nome}">
                 </div>
@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label for="sigla" class="form-label tituloLabel">SIGLA</label>
-                <input th:field="*{sigla}" th:errorclass="is-invalid" type="text" class="form-control is-valid" id="sigla">
+                <input th:maxlength="20" th:field="*{sigla}" th:errorclass="is-invalid" type="text" class="form-control" id="sigla">
                 <small>Sigla do partido</small>
                 <div class="invalid-feedback" th:errors="*{sigla}">
                 </div>

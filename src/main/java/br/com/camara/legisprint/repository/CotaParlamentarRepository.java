@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface CotaParlamentarRepository extends JpaRepository<CotaDeImpressao, Long> {
 
@@ -13,4 +14,7 @@ public interface CotaParlamentarRepository extends JpaRepository<CotaDeImpressao
 
     @Query("SELECT sum(c.quantidadeUtilizada) FROM CotaDeImpressao  c WHERE c.data BETWEEN ?1 AND ?2")
     Integer retornarASomaDasImpressoesAnual(LocalDate dataInicio, LocalDate dataFim);
+
+    @Query("SELECT c FROM CotaDeImpressao c where  c.data = ?1")
+    List<CotaDeImpressao> retornarUsoDeCotasDoDia(LocalDate hoje);
 }

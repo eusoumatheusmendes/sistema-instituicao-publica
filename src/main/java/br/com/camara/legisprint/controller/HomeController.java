@@ -1,5 +1,6 @@
 package br.com.camara.legisprint.controller;
 
+import br.com.camara.legisprint.repository.CamaraRepository;
 import br.com.camara.legisprint.services.AutenticacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,14 @@ public class HomeController {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
+    @Autowired
+    private CamaraRepository camaraRepository;
+
     @GetMapping
     public String abrirPaginaInicial(Model model){
         model.addAttribute("emailDaInstituicao", autenticacaoService.retornarEmailDaInstituicaoLogada());
+        model.addAttribute("nomeDoMunicipioDaInstituicaoLogada", camaraRepository.
+                buscarNomeDoMunicipioDaInstituicaoLogada(autenticacaoService.retornarEmailDaInstituicaoLogada()));
         informarSeAInstituicaoEstaLogada(model);
         return "/home";
     }

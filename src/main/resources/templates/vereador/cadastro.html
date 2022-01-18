@@ -33,9 +33,11 @@
 
             <input type="hidden" th:field="*{id}">
 
+            <input type="hidden" th:field="*{quantidadeDisponivelDeCotaDeImpressao}">
+
             <div class="form-group">
                 <label for="nomeCompleto" class="form-label tituloLabel">NOME COMPLETO</label>
-                <input th:field="*{nomeCompleto}" type="text" th:errorclass="is-invalid" class="form-control is-valid" id="nomeCompleto">
+                <input th:maxlength="50" th:field="*{nomeCompleto}" type="text" th:errorclass="is-invalid" class="form-control" id="nomeCompleto">
                 <small>Informe o nome completo</small>
                 <div class="invalid-feedback" th:errors="*{nomeCompleto}">
                 </div>
@@ -43,7 +45,7 @@
 
             <div class="form-group">
                 <label for="nomeParlamentar" class="form-label tituloLabel">NOME PARLAMENTAR</label>
-                <input th:field="*{nomeParlamentar}" th:errorclass="is-invalid" type="text" class="form-control is-valid" id="nomeParlamentar">
+                <input  th:maxlength="50" th:field="*{nomeParlamentar}" th:errorclass="is-invalid" type="text" class="form-control" id="nomeParlamentar">
                 <small>Informe o nome parlamentar</small>
                 <div class="invalid-feedback" th:errors="*{nomeParlamentar}">
                 </div>
@@ -51,10 +53,10 @@
 
             <div class="form-group">
                 <label for="partido" class="tituloLabel">PARTIDO POLÍTICO</label>
-                <select class="form-control is-valid" id="partido" th:field="*{partido}" th:errorclass="is-invalid">
+                <select class="form-control" id="partido" th:field="*{partido}" th:errorclass="is-invalid">
                     <option value="" selected>Partido</option>
                     <option th:each="partido : ${partidos}"
-                            th:value="${partido.id}" th:text="${partido.nome}" >1</option>
+                            th:value="${partido.id}" th:text="${partido.getSigla()}" >1</option>
 
                 </select>
                 <small>Informe o partido político</small> <br>
@@ -64,7 +66,7 @@
 
             <div class="form-group">
                 <label for="dataInicioLegislatura" class="form-label tituloLabel">DATA DE INÍCIO LEGISLATURA</label>
-                <input th:field="*{dataInicioLegislatura}" th:errorclass="is-invalid" type="date" class="form-control is-valid" id="dataInicioLegislatura">
+                <input th:field="*{dataInicioLegislatura}" th:errorclass="is-invalid" type="date" class="form-control" id="dataInicioLegislatura">
                 <small>Data de início da legislatura</small>
                 <div class="invalid-feedback" th:errors="*{dataInicioLegislatura}">
                 </div>
@@ -72,15 +74,15 @@
 
             <div class="form-group">
                 <label for="numeroCelular" class="form-label tituloLabel">NÚMERO PARA CONTATO</label>
-                <input th:field="*{numeroDeCelular}" th:errorclass="is-invalid" type="text" class="form-control is-valid" id="numeroCelular">
+                <input   maxlength="11"  th:field="*{numeroDeCelular}" th:errorclass="is-invalid" type="number" class="form-control" id="numeroCelular">
                 <small>Informe o número para contato</small>
-                <div class="invalid-feedback" th:errors="*{nomeParlamentar}">
+                <div class="invalid-feedback" th:errors="*{numeroDeCelular}">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="dataDeAniversario" class="form-label tituloLabel">DATA DE ANIVERSÁRIO</label>
-                <input th:field="*{dataDeAniversario}" th:errorclass="is-invalid" type="date" class="form-control is-valid" id="dataDeAniversario">
+                <input th:field="*{dataDeAniversario}" th:errorclass="is-invalid" type="date" class="form-control" id="dataDeAniversario">
                 <small>Data de aniversário</small>
                 <div class="invalid-feedback" th:errors="*{dataDeAniversario}">
                 </div>

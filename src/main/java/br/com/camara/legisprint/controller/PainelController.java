@@ -23,17 +23,23 @@ public class PainelController {
     @Autowired
     private CotaController cotaController;
 
+    @Autowired
+    private CamaraRepository camaraRepository;
+
     @GetMapping("/dashboard")
     public String abrirPainelPrincipal(Model model, Vereador vereador){
         model.addAttribute("somaDoUsoDeCotaMensal", cotaController.quantidadeUsadaDoMes());
         model.addAttribute("somaDoUsoDeCotaAnual", cotaController.quantidadeDeCotaUsadaNoAno());
         model.addAttribute("vereadores", vereadorRepository.buscarTodosOsVereadoresDaInstituicaoLogada(
                 autenticacaoService.retornarIdDaInstituicaoLogada()));
+        model.addAttribute("idDaInstituicaoLogada", autenticacaoService.retornarIdDaInstituicaoLogada().longValue());
+        model.addAttribute("nomeDoMunicipioDaInstituicaoLogada", camaraRepository.buscarNomeDoMunicipioDaInstituicaoLogada(autenticacaoService.retornarEmailDaInstituicaoLogada()));
         return "/painel/principal";
     }
 
     @GetMapping("/area")
     public String areaDoLogado(Model model){
+        model.addAttribute("nomeDoMunicipioDaInstituicaoLogada", camaraRepository.buscarNomeDoMunicipioDaInstituicaoLogada(autenticacaoService.retornarEmailDaInstituicaoLogada()));
         model.addAttribute("somaDoUsoDeCotaMensal", cotaController.quantidadeUsadaDoMes());
         model.addAttribute("somaDoUsoDeCotaAnual", cotaController.quantidadeDeCotaUsadaNoAno());
         return "/camara/area";

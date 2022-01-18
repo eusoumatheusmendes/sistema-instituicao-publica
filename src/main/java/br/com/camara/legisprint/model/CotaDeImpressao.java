@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -21,6 +22,7 @@ public class CotaDeImpressao extends AbstractEntity<Long> {
     @Getter @Setter
     @Column
     @NotBlank(message = "Por favor, informe uma descrição. Ex: pessoa que faz uso da cota.")
+    @Size(max = 100, message = "Descrição de uso não pode conter mais que 100 caracteres.")
     private String descricao;
 
     @Getter @Setter

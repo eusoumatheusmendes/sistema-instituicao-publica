@@ -30,7 +30,7 @@ public class PartidoController{
             return "/partido/cadastro";
         }
         repository.save(partido);
-        ra.addFlashAttribute("sucesso", "Partido político cadastrado com sucesso!");
+        ra.addFlashAttribute("sucesso", "Ação executada com sucesso!");
         return "redirect:/vereador/cadastro";
     }
 }

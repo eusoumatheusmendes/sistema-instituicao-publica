@@ -45,13 +45,13 @@ public class CotaController {
             return "/cota-parlamentar/registro";
         }
         repository.save(cotaDeImpressao);
-        ra.addFlashAttribute("sucesso", "Uso de cota registrado com sucesso!");
+        ra.addFlashAttribute("sucesso", "Uso registrado com sucesso!");
         return "redirect:/painel/dashboard";
     }
 
     @GetMapping("/lista")
     public String getUsoDeCotas(Model model){
-        model.addAttribute("registrosDeCotas", repository.findAll());
+        model.addAttribute("registrosDeCotas", repository.retornarUsoDeCotasDoDia(LocalDate.now()));
         return "/cota-parlamentar/lista";
     }
 
