@@ -24,6 +24,25 @@
     <span class="badge bg-dark text-white" th:text="${nomeDoMunicipioDaInstituicaoLogada}">Warning</span>
   </div>
 
+  <div class="row">
+
+    <div class="cardUsoPeriodo orange">
+      <div class="text-center">
+        <h2 style="color: dodgerblue" th:text="${somaDoUsoDeCotaMensal}">100</h2>
+        <span>Uso mensal</span>
+      </div>
+    </div>
+
+    <div class="cardUsoPeriodo orange">
+      <div class="text-center">
+        <h2 style="color: dodgerblue"  th:text="${somaDoUsoDeCotaAnual}">100</h2>
+        <span>Uso anual</span>
+      </div>
+    </div>
+
+
+  </div>
+
     <div class="row mt-4">
 
       <a class="navbar-brand" href="/cota/lista">
@@ -41,12 +60,6 @@
       <a href="/vereador/lista" class="navbar-brand">
         <span class="linksPaginaInicial">
          <ion-icon name="people"></ion-icon>
-        </span>
-      </a>
-
-      <a class="navbar-brand" href="/painel/area">
-        <span class="linksPaginaInicial">
-            <ion-icon name="stats-chart"></ion-icon>
         </span>
       </a>
 
