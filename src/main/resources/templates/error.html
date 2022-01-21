@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <title>Legis</title>
 </head>
-<body style="background-color: dodgerblue">
+<body   th:styleappend="${status} != 404 ? 'background-color: orangered' : 'background-color: dodgerblue'">
 
 <main class="container">
   <section class="text-center mt-4">
